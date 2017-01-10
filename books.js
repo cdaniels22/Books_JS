@@ -1,8 +1,8 @@
 function myBooks() {
-    myBooks.init();
+    this.init();
 }
 
-myBooks.init = function() {
+myBooks.prototype.init = function() {
     this.books = [
         {
             title: 'With the Old Breed',
@@ -23,15 +23,18 @@ myBooks.init = function() {
     ];
 };
 
-myBooks.getBookByTitle = function(title) {
+myBooks.prototype.getBookByTitle = function(title) {
     for (var index in this.books) {
         if (title == this.books[index].title) {
             console.log(this.books[index]);
         }
+        else{
+            return "Book Not Found";
+        }
     }
 };
 
-myBooks.getBookByAuthor = function(author) {
+myBooks.prototype.getBookByAuthor = function(author) {
     for (var index in this.books) {
         if (author == this.books[index].author) {
             console.log(this.books[index]);
@@ -39,15 +42,12 @@ myBooks.getBookByAuthor = function(author) {
     }
 };
 
-myBooks.getRandomBook = function(books) {
-    for (var index in this.books) {
-        if (books == this.books[index]) {
-            console.log(this.books[index].random(this.books) * this.length);
-        }
-    }
+myBooks.prototype.getRandomBook = function() {
+    var randomBook = this.books[Math.floor(Math.random() * this.books.length)];
+    return randomBook;
 };
 
-myBooks.addBook = function(title, author, datePublished, pages) {
+myBooks.prototype.addBook = function(title, author, datePublished, pages) {
     var book = {
         title: title,
         author: author,
