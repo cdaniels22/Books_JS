@@ -1,8 +1,8 @@
 function myBooks() {
-    this.init();
+    myBooks.init();
 }
 
-myBooks.prototype.init = function() {
+myBooks.init = function() {
     this.books = [
         {
             title: 'With the Old Breed',
@@ -23,49 +23,41 @@ myBooks.prototype.init = function() {
     ];
 };
 
-myBooks.prototype.returnBook = function() {
-    return console.log(this.myBooks[index]);
+myBooks.getBookByTitle = function(title) {
+    for (var index in this.books) {
+        if (title == this.books[index].title) {
+            console.log(this.books[index]);
+        }
+    }
 };
 
-myBooks.prototype.addBook = function(title, author, datePublished, pages) {
+myBooks.getBookByAuthor = function(author) {
+    for (var index in this.books) {
+        if (author == this.books[index].author) {
+            console.log(this.books[index]);
+        }
+    }
+};
+
+myBooks.getRandomBook = function(books) {
+    for (var index in this.books) {
+        if (books == this.books[index]) {
+            console.log(this.books[index].random(this.books) * this.length);
+        }
+    }
+};
+
+myBooks.addBook = function(title, author, datePublished, pages) {
     var book = {
         title: title,
         author: author,
         datePublished: datePublished,
         pages: pages
     };
-    this.myBooks.push(book);
-    for (var index in this.myBooks) {
-        console.log(this.myBooks[index]);
+    this.books.push(book);
+    for (var index in this.books) {
+        console.log(this.books[index]);
     }
 };
 
-myBooks.prototype.removeBook = function(title, author, datePublished, pages) {
-    this.myBooks.splice(book);
-};
-
-myBooks.prototype.returnBookByTitle = function(title) {
-    for (var index in this.myBooks) {
-        if (title == this.myBooks[index].title) {
-            console.log(this.myBooks[index].title);
-        }
-        return true;
-    }
-};
-myBooks.prototype.returnBookByAuthor = function(author) {
-    for (var index in this.myBooks) {
-        if (author == this.myBooks[index].author) {
-            console.log(this.myBooks[index].author);
-        }
-        return true;
-    }
-};
-myBooks.prototype.returnBookBydatePublished = function(datePublished) {
-    for (var index in this.myBooks) {
-        if (datePublished == this.myBooks[index].datePublished) {
-            console.log(this.myBooks[index].datePublished);
-        }
-        return true;
-    }
-};
-var myLibrary = new library();
+var myLibrary = new myBooks();
