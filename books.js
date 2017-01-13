@@ -26,10 +26,7 @@ myBooks.prototype.init = function() {
 myBooks.prototype.getBookByTitle = function(title) {
     for (var index in this.books) {
         if (title == this.books[index].title) {
-            console.log(this.books[index]);
-        }
-        else{
-            return "Book Not Found";
+            return this.books[index];
         }
     }
 };
@@ -37,12 +34,12 @@ myBooks.prototype.getBookByTitle = function(title) {
 myBooks.prototype.getBookByAuthor = function(author) {
     for (var index in this.books) {
         if (author == this.books[index].author) {
-            console.log(this.books[index]);
+            return this.books[index];
         }
     }
 };
 
-myBooks.prototype.getRandomBook = function() {
+myBooks.prototype.getRandomBook = function(books) {
     var randomBook = this.books[Math.floor(Math.random() * this.books.length)];
     return randomBook;
 };
@@ -56,7 +53,7 @@ myBooks.prototype.addBook = function(title, author, datePublished, pages) {
     };
     this.books.push(book);
     for (var index in this.books) {
-        console.log(this.books[index]);
+        return (book);
     }
 };
 
