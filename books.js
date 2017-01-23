@@ -55,28 +55,19 @@ myBooks.prototype.addBook = function(title, author, datePublished, pages) {
     }
 };
 
-myBooks.prototype.addBooks = function(title1, author1, datePublished1, pages1, title2, author2, datePublished2, pages2) {
-  var books = [{
-    title: title1,
-    author: author1,
-    datePublished: datePublished1,
-    pages: pages1
-  }, {
-    title: title2,
-    author: author2,
-    datePublished: datePublished2,
-    pages: pages2
-  }];
-  this.books.push(books);
-  for (var index in this.books) {
-    return books;
-  }
+myBooks.prototype.addBooks = function(booksList) {
+    for (var index in booksList) {
+        this.addBook(booksList[index].title, booksList[index].author, booksList[index].datePublished, booksList[index].pages);
+    }
+    return booksList;
 };
 
 myBooks.prototype.getAuthors = function() {
+    var allAuthors = [];
     for (var index in this.books) {
-        return [this.books[index].author].toString();
+        allAuthors.push(this.books[index].author.toString());
     }
+    return allAuthors;
 };
 
 myBooks.prototype.getRandomAuthor = function(author) {
